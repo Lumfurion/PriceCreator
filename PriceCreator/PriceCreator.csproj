@@ -59,6 +59,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\Offer.cs" />
+    <Compile Include="Models\Param.cs" />
+    <Compile Include="ViewsModels\DelegateCommand.cs" />
+    <Compile Include="Models\ChangeProperty.cs" />
+    <Compile Include="ViewsModels\PriceCeatorViewModel.cs" />
     <Compile Include="Views\PriceCeatorView.xaml.cs">
       <DependentUpon>PriceCeatorView.xaml</DependentUpon>
     </Compile>
@@ -89,10 +95,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewsModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Views\PriceCeatorView.xaml">
       <SubType>Designer</SubType>
