@@ -24,7 +24,7 @@ namespace ParserXML.Parserse
     public class Category
     {
         [XmlAttribute(AttributeName = "id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [XmlText]
         public string Text { get; set; }
     }

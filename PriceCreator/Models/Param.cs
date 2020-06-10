@@ -1,6 +1,6 @@
 ﻿namespace PriceCreator.Models
 {
-    public class Param : ChangeProperty
+    class Param : ChangeProperty
     {
         string name { get; set; }
         string text { get; set; }

@@ -42,23 +42,34 @@
                     <RowDefinition Height="31"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="Имя"/>
-                <TextBox x:Name="tbName" Grid.Row="0" Grid.Column="1" Margin="2" Grid.ColumnSpan="2"/>
+                <TextBox  Text="{Binding seller.Name}"  Grid.Row="0" Grid.Column="1" Margin="2" />
 
                 <Label  Grid.Row="1" Grid.Column="0" Content="Компания"/>
-                <TextBox  Name="tbCompany" Grid.Row="1" Grid.Column="1" Margin="2" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding  seller.Company}" Name="tbCompany" Grid.Row="1" Grid.Column="1" Margin="2" />
 
                 <Label Grid.Row="2" Grid.Column="0" Content="Категории"/>
-                <ComboBox   Name="CbCategory" Grid.Row="2" Grid.Column="1" Margin="2" Grid.ColumnSpan="2" />
+                <ComboBox  ItemsSource="{Binding   seller.Сategories }"
+                 SelectedItem="{Binding SelectCurrency}" 
+                 Grid.Row="2" Grid.Column="1" Margin="2"   SelectedIndex="{Binding SelectedIndex }">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Id}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="{Binding Path=Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Адрес сайта" Margin="2"/>
-                <TextBox Name="tbUrl" Grid.Row="3" Grid.ColumnSpan="2" Margin="2"  Grid.Column="1" />
+                <TextBox Text="{Binding  seller.Url}"  Grid.Row="3" Grid.ColumnSpan="2" Margin="2"  Grid.Column="1" />
 
-
-                <Button Grid.Row="4" Grid.Column="0"  FontSize="15" Margin="2" Content="+" />
-                <TextBox Name="tbcotegory"  Grid.Row="4" Grid.Column="1" Margin="2" Grid.ColumnSpan="2" />
-
+                <TextBox  Text="{Binding NewCategory}"
+                    Grid.Row="4" Grid.Column="1" Margin="2"  />
+                <Button Command="{Binding AddCategory}"  Grid.Row="4" 
+                   Grid.Column="0"  FontSize="15" Margin="2" Content="+" />
             </Grid>
-
         </GroupBox>
 
         <GroupBox Grid.Row="2"  Header="Products" FontSize="16" Margin="10 0 10 10" Background="#DFE5EB" Foreground="#005565" BorderBrush="#005565">
@@ -68,20 +79,17 @@
                     <RowDefinition Height="38*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding Path=Offers}" Name="ICProduct">
-                        <ItemsControl.ItemTemplate>
+                    <ListBox    ItemsSource="{Binding  OffersWithCategory}">
+                        <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="100*" />
-                                    </Grid.ColumnDefinitions>
-                                    <CheckBox Grid.Column="0" IsChecked="{Binding Active}" Margin="5"/>
-                                    <TextBox  Grid.Column="1" Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="3"/>
-                                </Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Id}"/>
+                                    <TextBlock Text=" - "/>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </ScrollViewer>
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Button Command="{Binding Path=AddCommand }" Background="Green" Margin="0,10,0,0">Добавить</Button>

@@ -1,7 +1,7 @@
 ﻿
 namespace PriceCreator.Models
 {
-    public class Currency:ChangeProperty
+    class Currency:ChangeProperty
     {
         string id { get; set; }
         public string Id

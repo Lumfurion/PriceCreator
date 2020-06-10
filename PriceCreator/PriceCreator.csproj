@@ -59,9 +59,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Offer.cs" />
     <Compile Include="Models\Param.cs" />
+    <Compile Include="Models\Seller.cs" />
+    <Compile Include="ParserXML\GetDataXml.cs" />
+    <Compile Include="ParserXML\ParseXml.cs" />
     <Compile Include="ViewsModels\DelegateCommand.cs" />
     <Compile Include="Models\ChangeProperty.cs" />
     <Compile Include="ViewsModels\PriceCeatorViewModel.cs" />
@@ -95,12 +99,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Page Include="Views\PriceCeatorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

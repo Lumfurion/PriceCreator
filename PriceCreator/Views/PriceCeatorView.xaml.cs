@@ -8,5 +8,6 @@ namespace PriceCreator.Views
         {
             InitializeComponent();
         }
+
     }
 }
