@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
+
 
 namespace PriceCreator.ViewsModels
 {
@@ -15,8 +15,6 @@ namespace PriceCreator.ViewsModels
     {
         #region Cвойства
         int selectedIndex { get; set; }
-       
-
         public int SelectedIndex
         {
             get { return selectedIndex; }
@@ -29,7 +27,9 @@ namespace PriceCreator.ViewsModels
 
 
         public ObservableCollection<Models.Offer> OffersWithCategory { get; set; }
-        
+
+        public Models.Offer SelectOffer { get; set; }
+
         /// <summary>
         /// Модель продавец
         /// </summary>
@@ -130,7 +130,8 @@ namespace PriceCreator.ViewsModels
                     {
                         int Id = seller.Сategories.LastOrDefault().Id + 1;//Последный адишник.
                         string name = NewCategory;
-                        seller.Сategories.Add(new Models.Category(Id, name));  
+                        seller.Сategories.Add(new Models.Category(Id, name));
+                      
                     }
 
                 });

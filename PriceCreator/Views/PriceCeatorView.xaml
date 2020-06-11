@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:PriceCreator.ViewsModels"
         Title="Price Creator for => rozetka.com.ua" 
-        Height="1000" Width="1000"  WindowStartupLocation="CenterScreen"
+        Height="1000" Width="850"  WindowStartupLocation="CenterScreen"
         >
     <Window.DataContext>
         <vm:PriceCeatorViewModel/>
@@ -28,6 +28,7 @@
             <Label  Grid.Column="1" FontSize="16" Content="{Binding PathFile}" />
             <Button Command="{Binding OvpenFile }"  Grid.Column="0" FontSize="15" Margin="2" Content="Load/Save" />
         </Grid>
+        <!--Mandatory information-->
         <GroupBox Grid.Row="1"  Header="Mandatory information" FontSize="16" Margin="10 0 10 10" Background="#DFE5EB" Foreground="#005565" BorderBrush="#005565">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -79,14 +80,58 @@
                     <RowDefinition Height="38*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <ListBox    ItemsSource="{Binding  OffersWithCategory}">
+                    <ListBox ItemsSource="{Binding  OffersWithCategory}" SelectedItem="{Binding SelectOffer}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Id}"/>
-                                    <TextBlock Text=" - "/>
-                                    <TextBlock Text="{Binding Name}"/>
-                                </StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="91*"/>
+                                        <RowDefinition Height="878*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="36*"/>
+                                            <RowDefinition Height="23*"/>
+                                            <RowDefinition Height="21*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="23*"/>
+                                                <ColumnDefinition Width="115*"/>
+                                                <ColumnDefinition Width="654*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox  IsChecked="{ Binding Available}" Margin="5,14,0,12"  VerticalAlignment="Center"/>
+                                            <TextBlock  Grid.Column="1"  FontSize="20"  Text="Имя товара:" VerticalAlignment="Center" Margin="0,7"  />
+                                            <TextBlock  Grid.Column="2"  FontSize="20"  Text="{Binding Name}" VerticalAlignment="Center" />
+                                        </Grid>
+
+                                        <Grid  Grid.Row="1" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="54*"/>
+                                                <ColumnDefinition Width="90*"/>
+                                                <ColumnDefinition Width="28*"/>
+                                                <ColumnDefinition Width="95*"/>
+                                                <ColumnDefinition Width="96*"/>
+                                                <ColumnDefinition Width="194*"/>
+                                                <ColumnDefinition Width="48*"/>
+                                                <ColumnDefinition Width="91*"/>
+                                                <ColumnDefinition Width="45*"/>
+                                                <ColumnDefinition Width="51*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock  Text="Цена:"    FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                            <TextBlock Grid.Column="1"  Text="{Binding Price}"    FontSize="20" VerticalAlignment="Center" />
+                                            <TextBlock Grid.Column="2"  Text="{Binding CurrencyId}"    FontSize="20" VerticalAlignment="Center"  />
+                                            <TextBlock Grid.Column="3"  Text=" Продавец:"    FontSize="20" VerticalAlignment="Center"   />
+                                            <TextBlock Grid.Column="4"  Text="{Binding Vendor}"    FontSize="20" VerticalAlignment="Center"  />
+                                            <TextBlock Grid.Column="5"  Text="  Количество товаров:"    FontSize="20" VerticalAlignment="Center" />
+                                            <TextBlock Grid.Column="6"  Text="{Binding Stock_quantity}"    FontSize="20" VerticalAlignment="Center"  />
+                                            <TextBlock Grid.Column="7"  Text="  Id товара:"    FontSize="20" VerticalAlignment="Center"   />
+                                            <TextBlock Grid.Column="8"  Text="{Binding Id}"    FontSize="20" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <!--<TextBlock Grid.Row="2"  Text="Напряжение АКБ,12V  Мощность,1.0 кВт  Пиковая мощность,1.5 кВт Зарядное устройство, А до 90А    Страна-производитель Украина    Гарантия 1 год "    FontSize="20" VerticalAlignment="Center"  />-->
+                                    </Grid>
+
+                                </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
