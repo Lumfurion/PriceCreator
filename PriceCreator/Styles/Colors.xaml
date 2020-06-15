@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="LightBrush" Color="white" />
+    
+    <!--Стиль заднего фона пользовательского интерфейса-->
+    <SolidColorBrush x:Key="backgroundBrush" Color="#FF00FFAE" />
+    <!--Для кнопки голубой-->
+    <SolidColorBrush x:Key="BrushBlue" Color="#FF1EBAE8" />
+    <SolidColorBrush x:Key="BrushLightBlue" Color="#FF1EBAE8" Opacity="0.60"/>
+    <SolidColorBrush x:Key="UltraLightBlueBrush" Color="#FF1EBAE8" Opacity="0.40"  />
+
+    <!--Для кнопки красный-->
+    <SolidColorBrush x:Key="BrushRed" Color="Red" />
+    <SolidColorBrush x:Key="BrushLightRed" Color="Red" Opacity="0.60"/>
+    <SolidColorBrush x:Key="UltraLightRedBrush" Color="Red" Opacity="0.40"  />
+
+    <!--Для кнопки оранжевой-->
+    <SolidColorBrush x:Key="BrushOrange" Color="Orange" />
+    <SolidColorBrush x:Key="BrushLightOrange" Color="Orange" Opacity="0.60"/>
+    <SolidColorBrush x:Key="UltraLightOrangeBrush" Color="Orange" Opacity="0.40"  />
+
+    <!--Для кнопки салатовый-->
+    <SolidColorBrush x:Key="BrushGreen" Color="#FFABF113" />
+    <SolidColorBrush x:Key="BrushLightGreen" Color="#FFABF113" Opacity="0.60"/>
+    <SolidColorBrush x:Key="UltraLightBrushGreen" Color="#FFABF113" Opacity="0.40"  />
+
+
+    <SolidColorBrush x:Key="DarkBrush" Color="#FFD6D6D6" />
+    <SolidColorBrush x:Key="MediumBrush" Color="#FFF1F1F1" />
+</ResourceDictionary>

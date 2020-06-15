@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Collections.ObjectModel;
-
+using PriceCreator.Views;
 
 namespace PriceCreator.ViewsModels
 {
@@ -61,7 +61,7 @@ namespace PriceCreator.ViewsModels
         /// Выбраная категория.
         /// </summary>
         private Models.Category selectCategory { get; set; }
-        public Models.Category SelectCurrency
+        public Models.Category SelectCategory
         {
             get { return selectCategory; }
             set 
@@ -71,7 +71,7 @@ namespace PriceCreator.ViewsModels
                 if (selectCategory != null && isOpenFile)
                 {   
 
-                    var temp = seller.Offers.Where(of => of.CategoryId == SelectCurrency.Id).ToList();
+                    var temp = seller.Offers.Where(of => of.CategoryId == SelectCategory.Id).ToList();
                     OffersWithCategory.Clear();
                     foreach (var item in temp)
                     {
@@ -113,6 +113,7 @@ namespace PriceCreator.ViewsModels
                         {
                             SelectedIndex = 0;
                         }
+
                     }
                 });
               
@@ -130,8 +131,7 @@ namespace PriceCreator.ViewsModels
                     {
                         int Id = seller.Сategories.LastOrDefault().Id + 1;//Последный адишник.
                         string name = NewCategory;
-                        seller.Сategories.Add(new Models.Category(Id, name));
-                      
+                        seller.Сategories.Add(new Models.Category(Id, name)); 
                     }
 
                 });
@@ -139,6 +139,37 @@ namespace PriceCreator.ViewsModels
             }
         }
 
+        #region Добавление,изменение,удаление,товаров.
+        public DelegateCommand AddProduct
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    AddProductView viewAddProduct = new AddProductView();
+                    AddProductViewModel vmaddProduct = new AddProductViewModel(SelectCategory.Id, seller, OffersWithCategory);
+                    viewAddProduct.DataContext = vmaddProduct;
+                    viewAddProduct.Show();
+
+                }, (obj) => selectCategory != null);
+            }
+        }
+
+        public DelegateCommand DeleteProduct
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {   
+                    MessageBox.Show(SelectOffer.Name);
+                    seller.Offers.Remove(SelectOffer);//удаление товара из модели.
+                    OffersWithCategory.Remove(SelectOffer);//удаление из временного списка.
+                    SelectOffer = null;
+                }, (obj) => SelectOffer != null);
+            }
+        }
+
+        #endregion
         public void Сlean()
         {
             seller.Name = " ";
@@ -208,7 +239,7 @@ namespace PriceCreator.ViewsModels
             {
                 foreach (Match match in Regex.Matches(offers[i].Description, pattern))
                 {
-                    Offers[i].Description.Add(match.Groups[1].Value);
+                    Offers[i].Descriptions.Add(new Description(match.Groups[1].Value));
                 }
             }
         }

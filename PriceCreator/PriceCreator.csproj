@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Rozetka.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -61,14 +64,24 @@
     </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\Description.cs" />
     <Compile Include="Models\Offer.cs" />
     <Compile Include="Models\Param.cs" />
     <Compile Include="Models\Seller.cs" />
     <Compile Include="ParserXML\GetDataXml.cs" />
     <Compile Include="ParserXML\ParseXml.cs" />
+    <Compile Include="ViewsModels\AddImageViewModel.cs" />
+    <Compile Include="ViewsModels\AddProductViewModel.cs" />
     <Compile Include="ViewsModels\DelegateCommand.cs" />
     <Compile Include="Models\ChangeProperty.cs" />
+    <Compile Include="ViewsModels\EditProductViewModel.cs" />
     <Compile Include="ViewsModels\PriceCeatorViewModel.cs" />
+    <Compile Include="Views\AddImageView.xaml.cs">
+      <DependentUpon>AddImageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddProductView.xaml.cs">
+      <DependentUpon>AddProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PriceCeatorView.xaml.cs">
       <DependentUpon>PriceCeatorView.xaml</DependentUpon>
     </Compile>
@@ -100,11 +113,41 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Styles\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Texts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddImageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PriceCeatorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Rozetka.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

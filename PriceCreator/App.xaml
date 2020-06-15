@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:PriceCreator"
              StartupUri="Views\PriceCeatorView.xaml">
     <Application.Resources>
-         
+        <!--Подключение ресурсов-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\Colors.xaml"/>
+
+                <ResourceDictionary Source="Styles\Fonts.xaml"/>
+                <!--<ResourceDictionary Source="Styles\Icons.xaml" />-->
+
+                <ResourceDictionary Source="Styles\ScrollViewer.xaml" />
+                <ResourceDictionary Source="Styles\Texts.xaml" />
+                <ResourceDictionary Source="Styles\Buttons.xaml" />
+                <!--<ResourceDictionary Source="Styles\RadioButton.xaml" />-->
+                <!--<ResourceDictionary Source="Styles\ContentControls.xaml" />
+                <ResourceDictionary Source="Styles\UserControl.xaml" />-->
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

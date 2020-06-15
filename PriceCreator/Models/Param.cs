@@ -20,13 +20,13 @@
             get { return text; }
             set
             {
-                name = value;
+                text = value;
                 OnPropertyChanged("Text");
             }
         }
-      
 
 
+        public Param() { }
         public Param(string name, string text)
         {
             Name = name;
