@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 namespace PriceCreator.Models
 {
-    class Seller : ChangeProperty
+    class SellerModel : ChangeProperty
     {
         string name { get; set; }
         public string Name
@@ -44,16 +44,16 @@ namespace PriceCreator.Models
                 OnPropertyChanged("Date");
             }
         }
-        public ObservableCollection<Category> Сategories { get; set; }
-        public ObservableCollection<Currency> Currencies { get; set; }
-        public ObservableCollection<Offer> Offers { get; set; }
+        public ObservableCollection<CategoryModel> Сategories { get; set; }
+        public ObservableCollection<CurrencyModel> Currencies { get; set; }
+        public ObservableCollection<OfferModel> Offers { get; set; }
 
 
-        public Seller()
+        public SellerModel()
         {
-            Сategories = new ObservableCollection<Category>();
-            Currencies = new ObservableCollection<Currency>();
-            Offers = new ObservableCollection<Offer>();
+            Сategories = new ObservableCollection<CategoryModel>();
+            Currencies = new ObservableCollection<CurrencyModel>();
+            Offers = new ObservableCollection<OfferModel>();
         }
 
     }

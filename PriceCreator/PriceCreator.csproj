@@ -62,14 +62,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Currency.cs" />
-    <Compile Include="Models\Description.cs" />
-    <Compile Include="Models\Offer.cs" />
-    <Compile Include="Models\Param.cs" />
-    <Compile Include="Models\Seller.cs" />
-    <Compile Include="ParserXML\GetDataXml.cs" />
-    <Compile Include="ParserXML\ParseXml.cs" />
+    <Compile Include="ManagerXml\Generate.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\CurrencyModel.cs" />
+    <Compile Include="Models\DescriptionModel.cs" />
+    <Compile Include="Models\OfferModel.cs" />
+    <Compile Include="Models\ParamModel.cs" />
+    <Compile Include="Models\SellerModel.cs" />
+    <Compile Include="ManagerXml\GetDataXml.cs" />
+    <Compile Include="ManagerXml\ParseXml.cs" />
     <Compile Include="ViewsModels\AddImageViewModel.cs" />
     <Compile Include="ViewsModels\AddProductViewModel.cs" />
     <Compile Include="ViewsModels\DelegateCommand.cs" />
@@ -81,6 +82,9 @@
     </Compile>
     <Compile Include="Views\AddProductView.xaml.cs">
       <DependentUpon>AddProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditProductView.xaml.cs">
+      <DependentUpon>EditProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PriceCeatorView.xaml.cs">
       <DependentUpon>PriceCeatorView.xaml</DependentUpon>
@@ -138,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

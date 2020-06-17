@@ -1,7 +1,7 @@
 ﻿
 namespace PriceCreator.Models
 {
-    class Category:ChangeProperty
+    class CategoryModel:ChangeProperty
     {
        
         int id { get; set; }
@@ -27,7 +27,7 @@ namespace PriceCreator.Models
             }
         }
 
-        public Category(int id, string name)
+        public CategoryModel(int id, string name)
         {
             Id = id;
             Name = name;

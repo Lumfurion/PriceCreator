@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using PriceCreator.Models;
-using ParserXML.Parserse;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.IO;
@@ -8,6 +7,8 @@ using System.Linq;
 using System.Windows;
 using System.Collections.ObjectModel;
 using PriceCreator.Views;
+using ParserXML;
+using PriceCreator.ManagerXml;
 
 namespace PriceCreator.ViewsModels
 {
@@ -24,16 +25,9 @@ namespace PriceCreator.ViewsModels
                 OnPropertyChanged("SelectedIndex");
             }
         }
-
-
-        public ObservableCollection<Models.Offer> OffersWithCategory { get; set; }
-
-        public Models.Offer SelectOffer { get; set; }
-
-        /// <summary>
-        /// Модель продавец
-        /// </summary>
-        public Seller seller { get; set; }
+        public ObservableCollection<OfferModel> OffersWithCategory { get; set; }
+        public OfferModel SelectOffer { get; set; }
+        public SellerModel seller { get; set; }
         bool isOpenFile { get; set; } = false;
         string pathFile { get; set; }
         public string PathFile
@@ -60,8 +54,8 @@ namespace PriceCreator.ViewsModels
         /// <summary>
         /// Выбраная категория.
         /// </summary>
-        private Models.Category selectCategory { get; set; }
-        public Models.Category SelectCategory
+        private CategoryModel selectCategory { get; set; }
+        public CategoryModel SelectCategory
         {
             get { return selectCategory; }
             set 
@@ -89,8 +83,8 @@ namespace PriceCreator.ViewsModels
         public PriceCeatorViewModel()
         {
             PathFile = "Name file";
-            seller = new Seller();
-            OffersWithCategory = new ObservableCollection<Models.Offer>();
+            seller = new SellerModel();
+            OffersWithCategory = new ObservableCollection<OfferModel>();
             SelectedIndex = -1;
         }
 
@@ -131,7 +125,8 @@ namespace PriceCreator.ViewsModels
                     {
                         int Id = seller.Сategories.LastOrDefault().Id + 1;//Последный адишник.
                         string name = NewCategory;
-                        seller.Сategories.Add(new Models.Category(Id, name)); 
+                        seller.Сategories.Add(new CategoryModel(Id, name));
+                    
                     }
 
                 });
@@ -151,7 +146,22 @@ namespace PriceCreator.ViewsModels
                     viewAddProduct.DataContext = vmaddProduct;
                     viewAddProduct.Show();
 
-                }, (obj) => selectCategory != null);
+                }, (obj) => SelectCategory != null);
+            }
+        }
+
+
+        public DelegateCommand EditProduct
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    EditProductView viewEditProduct = new EditProductView();
+                    EditProductViewModel vmEditProduct = new EditProductViewModel() { offer= SelectOffer};
+                    viewEditProduct.DataContext = vmEditProduct;
+                    viewEditProduct.ShowDialog();
+                }, (obj) => SelectOffer != null);
             }
         }
 
@@ -161,28 +171,16 @@ namespace PriceCreator.ViewsModels
             {
                 return new DelegateCommand((obj) =>
                 {   
-                    MessageBox.Show(SelectOffer.Name);
                     seller.Offers.Remove(SelectOffer);//удаление товара из модели.
                     OffersWithCategory.Remove(SelectOffer);//удаление из временного списка.
                     SelectOffer = null;
                 }, (obj) => SelectOffer != null);
             }
         }
-
         #endregion
-        public void Сlean()
-        {
-            seller.Name = " ";
-            seller.Company = " ";
-            seller.Url = " ";
-            seller.Date = " ";
-            seller.Сategories.Clear();
-            seller.Currencies.Clear();
-            seller.Offers.Clear();
 
-        }
 
-        public void initialization(string path)
+        void initialization(string path)
         {
             Сlean();
             Yml_catalog catalog;
@@ -197,21 +195,21 @@ namespace PriceCreator.ViewsModels
 
             foreach (var sh in shop.Categories.Category)
             {
-                seller.Сategories.Add(new Models.Category(sh.Id, sh.Text));
+                seller.Сategories.Add(new CategoryModel(sh.Id, sh.Text));
             }
 
 
             int count = shop.Currencies.Currency.Count;
             for (var i = 0; i < count; i++)
             {
-                seller.Currencies.Add(new Models.Currency(shop.Currencies.Currency[i].Id, shop.Currencies.Currency[i].Rate));
+                seller.Currencies.Add(new CurrencyModel(shop.Currencies.Currency[i].Id, shop.Currencies.Currency[i].Rate));
             }
 
 
 
             foreach (var offer in offers)
             {
-                seller.Offers.Add(new Models.Offer(offer.Url, offer.Price, offer.CurrencyId, offer.CategoryId, offer.Name, offer.Vendor, offer.Stock_quantity, offer.Available, offer.Id));
+                seller.Offers.Add(new OfferModel(offer.Url, offer.Price, offer.CurrencyId, offer.CategoryId, offer.Name, offer.Vendor, offer.Stock_quantity, offer.Available, offer.Id));
             }
 
 
@@ -220,7 +218,7 @@ namespace PriceCreator.ViewsModels
             {
                 for (var t = 0; t < 6; t++)
                 {
-                    seller.Offers[i].Param.Add(new Models.Param(offers[i].Param[t].Name, offers[i].Param[t].Text));
+                    seller.Offers[i].Param.Add(new ParamModel(offers[i].Param[t].Name, offers[i].Param[t].Text));
                 }
             }
 
@@ -239,11 +237,21 @@ namespace PriceCreator.ViewsModels
             {
                 foreach (Match match in Regex.Matches(offers[i].Description, pattern))
                 {
-                    Offers[i].Descriptions.Add(new Description(match.Groups[1].Value));
+                    Offers[i].Descriptions.Add(new DescriptionModel(match.Groups[1].Value));
                 }
             }
         }
+        void Сlean()
+        {
+            seller.Name = " ";
+            seller.Company = " ";
+            seller.Url = " ";
+            seller.Date = " ";
+            seller.Сategories.Clear();
+            seller.Currencies.Clear();
+            seller.Offers.Clear();
 
+        }
 
 
     }

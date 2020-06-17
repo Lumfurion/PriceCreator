@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace ParserXML.Parserse
+namespace ParserXML
 {
     [XmlRoot(ElementName = "currency")]
     public class Currency

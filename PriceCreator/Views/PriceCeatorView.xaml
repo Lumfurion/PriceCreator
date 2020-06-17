@@ -138,7 +138,7 @@
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" >
                 <Button  Style="{ StaticResource ButtonAdd}"   Command="{Binding AddProduct}" Content="Добавить"/>
                 <Button  Style="{ StaticResource ButtonError}" Command="{Binding DeleteProduct }"  Content="Удалить"/>
-                <Button  Style="{ StaticResource ButtonEdit}" Command="{Binding DeleteEdit }"  Content="Изменить"/>
+                <Button  Style="{ StaticResource ButtonEdit}"  Command="{Binding  EditProduct}"  Content="Изменить"/>
             </StackPanel>
         </GroupBox>
          <!--Footer-->

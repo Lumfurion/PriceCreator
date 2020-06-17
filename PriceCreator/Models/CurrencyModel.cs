@@ -1,7 +1,7 @@
 ﻿
 namespace PriceCreator.Models
 {
-    class Currency:ChangeProperty
+    class CurrencyModel:ChangeProperty
     {
         string id { get; set; }
         public string Id
@@ -23,7 +23,7 @@ namespace PriceCreator.Models
                 OnPropertyChanged("Rate");
             }
         }
-        public Currency(string id, int rate)
+        public CurrencyModel(string id, int rate)
         {
             Id = id;
             Rate = rate;

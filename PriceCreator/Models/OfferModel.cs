@@ -2,7 +2,7 @@
 
 namespace PriceCreator.Models
 {
-    class Offer:ChangeProperty
+    class OfferModel:ChangeProperty
     {
         string url { get; set; }
         public string Url
@@ -70,8 +70,8 @@ namespace PriceCreator.Models
                 OnPropertyChanged("Vendor");
             }
         }
-        public ObservableCollection<Description> Descriptions { get; set; } = new ObservableCollection<Description>();
-        public ObservableCollection<Param> Param { get; set; } = new ObservableCollection<Param>();
+        public ObservableCollection<DescriptionModel> Descriptions { get; set; } = new ObservableCollection<DescriptionModel>();
+        public ObservableCollection<ParamModel> Param { get; set; } = new ObservableCollection<ParamModel>();
        
         int stock_quantity { get; set; }
         public int Stock_quantity
@@ -106,8 +106,8 @@ namespace PriceCreator.Models
             }
         }
 
-        public Offer(){}
-        public Offer(string url, decimal price, string currencyId, int categoryId, string name, string vendor, int stock_quantity, bool available, int id)
+        public OfferModel(){}
+        public OfferModel(string url, decimal price, string currencyId, int categoryId, string name, string vendor, int stock_quantity, bool available, int id)
         {
             Url = url;
             Price = price;

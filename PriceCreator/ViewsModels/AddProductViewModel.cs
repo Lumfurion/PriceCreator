@@ -3,32 +3,31 @@ using PriceCreator.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace PriceCreator.ViewsModels
 {
     class AddProductViewModel:ChangeProperty
     {
-        public Offer offer { get; set; }
-        readonly Seller seller;
+        public OfferModel offer { get; set; }
+        readonly SellerModel seller;
         readonly int category;
-        readonly ObservableCollection<Offer> offers;
+        readonly ObservableCollection<OfferModel> offers;
 
         public AddProductViewModel() {  }
        
 
-        public AddProductViewModel(int category, Seller seller, ObservableCollection<Offer> offers)
+        public AddProductViewModel(int category, SellerModel seller, ObservableCollection<OfferModel> offers)
         {
-            offer = new Offer();
-            offer.Descriptions.Add(new Description());
-            offer.Descriptions.Add(new Description());
-            offer.Descriptions.Add(new Description());
-            offer.Descriptions.Add(new Description());
-            offer.Param.Add(new Param());
-            offer.Param.Add(new Param());
-            offer.Param.Add(new Param());
-            offer.Param.Add(new Param());
+            offer = new OfferModel();
+            offer.Descriptions.Add(new DescriptionModel());
+            offer.Descriptions.Add(new DescriptionModel());
+            offer.Descriptions.Add(new DescriptionModel());
+            offer.Descriptions.Add(new DescriptionModel());
+            offer.Param.Add(new ParamModel());
+            offer.Param.Add(new ParamModel());
+            offer.Param.Add(new ParamModel());
+            offer.Param.Add(new ParamModel());
             this.seller = seller;
             this.category = category;
             this.offers = offers;
@@ -56,7 +55,7 @@ namespace PriceCreator.ViewsModels
             {
                 return new DelegateCommand((obj) =>
                 {
-                    offer.Descriptions.Add(new Description());
+                    offer.Descriptions.Add(new DescriptionModel());
                 });
             }
         }
@@ -67,7 +66,7 @@ namespace PriceCreator.ViewsModels
             {
                 return new DelegateCommand((obj) =>
                 {
-                    offer.Param.Add(new Param());
+                    offer.Param.Add(new ParamModel());
 
                 });
             }

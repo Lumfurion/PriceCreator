@@ -1,6 +1,6 @@
 ﻿namespace PriceCreator.Models
 {
-    class Description:ChangeProperty
+    class DescriptionModel:ChangeProperty
     {
         string text { get; set; }
         public string Text
@@ -13,9 +13,9 @@
             }
         }
 
-        public Description() { }
+        public DescriptionModel() { }
         
-        public Description(string text)
+        public DescriptionModel(string text)
         {
             Text = text;
         }
