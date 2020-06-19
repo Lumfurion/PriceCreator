@@ -4,11 +4,10 @@ using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.IO;
 using System.Linq;
-using System.Windows;
 using System.Collections.ObjectModel;
 using PriceCreator.Views;
-using ParserXML;
-using PriceCreator.ManagerXml;
+using PriceCreator.ManagerXml.DeserializeObjects;
+using PriceCreator.ManagerXml.Serialization;
 
 namespace PriceCreator.ViewsModels
 {
@@ -126,7 +125,9 @@ namespace PriceCreator.ViewsModels
                         int Id = seller.Сategories.LastOrDefault().Id + 1;//Последный адишник.
                         string name = NewCategory;
                         seller.Сategories.Add(new CategoryModel(Id, name));
-                    
+                        Generate.DataTransfer(seller, "d");
+
+
                     }
 
                 });
@@ -185,7 +186,10 @@ namespace PriceCreator.ViewsModels
             Сlean();
             Yml_catalog catalog;
             var serializer = new XmlSerializer(typeof(Yml_catalog));
-            using (var stream = File.OpenRead(@path)) catalog = (Yml_catalog)serializer.Deserialize(stream);
+            using (var stream = File.OpenRead(@path))
+            {
+                catalog = (Yml_catalog)serializer.Deserialize(stream);
+            }
             var offers = catalog.Shop.Offers.Offer;
             var shop = catalog.Shop;
             seller.Name = shop.Name;

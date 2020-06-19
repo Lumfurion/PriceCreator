@@ -63,6 +63,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ManagerXml\Generate.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Categories.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Category.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Currencies.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Currency.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Offer.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Offers.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Param.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Shop.cs" />
+    <Compile Include="ManagerXml\SerializeObjects\Yml_catalog.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CurrencyModel.cs" />
     <Compile Include="Models\DescriptionModel.cs" />
@@ -157,5 +166,6 @@
   <ItemGroup>
     <Resource Include="Rozetka.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

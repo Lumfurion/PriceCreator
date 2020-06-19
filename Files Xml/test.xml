@@ -15,7 +15,7 @@
 			<category id="4">Пускозарядные устройства</category>
 		</categories>
 		<offers>
-			<offer available="true" id="3001">
+			<offer available="true" id="13">
 				<url>http://www.leoton.ua/ups-mx1-online.php</url>
 				<price>6720</price>
 				<currencyId>UAH</currencyId>
@@ -41,68 +41,17 @@
 				<param name="Гарантия">1 год</param>
 				<stock_quantity>10</stock_quantity>
 			</offer>
-			<offer available="true" id="3002">
+
+			<offer available="true" id="33">
 				<url>http://www.leoton.ua/ups-mx2-12-online.php</url>
 				<price>11040</price>
-				<currencyId>UAH</currencyId>
-				<categoryId>2</categoryId>
-				<picture>http://www.leoton.ua/images/mx/4343.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3443.jpg</picture>
-				<name>Источники бесперебойного питания MX (MX2-12)</name>
-				<vendor>ГАЛС-С</vendor>
-				<description><![CDATA[
-				<p>ИБП МХ представляет собой наилучший способ защиты Вашего электрооборудования.</p>
-				<p>ON-Line</p>
-				<p>•Для серверов и телекоммуникационного оборудования</p>
-				<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
-				<p>•Для газовых котлов всех типов</p>
-				<p>•Для Кофе-машин и бытовой аппаратуры</p>]]></description>
-				<param name="Напряжение АКБ, V">30000V</param>
-				<param name="Мощность, кВт">4.0 кВт</param>
-				<param name="Пиковая мощность, кВт">5.5 кВт</param>
-				<param name="Зарядное устройство, А">до 93434 А</param>
-				<param name="Страна-производитель">Украина</param>
-				<param name="Гарантия">3 год</param>
-				<stock_quantity>99</stock_quantity>
-			</offer>
-			 <offer available="false" id="3002">
-				<url>http://www.leoton.ua/ups-mx2-12-online.php</url>
-				<price>11040</price>
-				<currencyId>UAH</currencyId>
-				<categoryId>2</categoryId>
-				<picture>http://www.leoton.ua/images/mx/4343.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3443.jpg</picture>
-				<name>Источники бесперебойного питания MX (MX2-12)</name>
-				<vendor>ГАЛС-С</vendor>
-				<description><![CDATA[
-				<p>ИБП МХ представляет собой наилучший способ защиты Вашего электрооборудования.</p>
-				<p>ON-Line</p>
-				<p>•Для серверов и телекоммуникационного оборудования</p>
-				<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
-				<p>•Для газовых котлов всех типов</p>
-				<p>•Для Кофе-машин и бытовой аппаратуры</p>]]></description>
-				<param name="Напряжение АКБ, V">4000V</param>
-				<param name="Мощность, кВт">4.0 кВт</param>
-				<param name="Пиковая мощность, кВт">5.5 кВт</param>
-				<param name="Зарядное устройство, А">до 434 А</param>
-				<param name="Страна-производитель">Украина</param>
-				<param name="Гарантия">3 год</param>
-				<stock_quantity>100</stock_quantity>
-			</offer>
-			 <offer available="true" id="3002">
-				<url>http://www.leoton.ua/ups-mx2-12-online.php</url>
-				<price>3000</price>
 				<currencyId>UAH</currencyId>
 				<categoryId>1</categoryId>
 				<picture>http://www.leoton.ua/images/mx/4343.jpg</picture>
 				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
 				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
 				<picture>http://www.leoton.ua/images/mx/3443.jpg</picture>
-				<name>Fufdds</name>
+				<name>Источники бесперебойного питания MX (MX2-12)</name>
 				<vendor>ГАЛС-С</vendor>
 				<description><![CDATA[
 				<p>ИБП МХ представляет собой наилучший способ защиты Вашего электрооборудования.</p>
@@ -111,40 +60,13 @@
 				<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
 				<p>•Для газовых котлов всех типов</p>
 				<p>•Для Кофе-машин и бытовой аппаратуры</p>]]></description>
-				<param name="Напряжение АКБ, V">4000V</param>
+				<param name="Напряжение АКБ, V">30V</param>
 				<param name="Мощность, кВт">4.0 кВт</param>
 				<param name="Пиковая мощность, кВт">5.5 кВт</param>
-				<param name="Зарядное устройство, А">до 434 А</param>
+				<param name="Зарядное устройство, А">до 93434 А</param>
 				<param name="Страна-производитель">Украина</param>
 				<param name="Гарантия">3 год</param>
-				<stock_quantity>100</stock_quantity>
-			</offer>
-			
-			<offer available="true" id="3002">
-				<url>http://www.leoton.ua/ups-mx2-12-online.php</url>
-				<price>1000</price>
-				<currencyId>$</currencyId>
-				<categoryId>3</categoryId>
-				<picture>http://www.leoton.ua/images/mx/4343.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3443.jpg</picture>
-				<name>tsfdd</name>
-				<vendor>ГАЛС-С</vendor>
-				<description><![CDATA[
-				<p>ИБП МХ представляет собой наилучший способ защиты Вашего электрооборудования.</p>
-				<p>ON-Line</p>
-				<p>•Для серверов и телекоммуникационного оборудования</p>
-				<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
-				<p>•Для газовых котлов всех типов</p>
-				<p>•Для Кофе-машин и бытовой аппаратуры</p>]]></description>
-				<param name="Напряжение АКБ, V">1000000000000V</param>
-				<param name="Мощность, кВт">4.0 кВт</param>
-				<param name="Пиковая мощность, кВт">5.5 кВт</param>
-				<param name="Зарядное устройство, А">до 434 А</param>
-				<param name="Страна-производитель">Украина</param>
-				<param name="Гарантия">3 год</param>
-				<stock_quantity>100</stock_quantity>
+				<stock_quantity>99</stock_quantity>
 			</offer>
 		</offers>
 	</shop>

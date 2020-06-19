@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace ParserXML
+namespace PriceCreator.ManagerXml.DeserializeObjects
 {
     [XmlRoot(ElementName = "currency")]
     public class Currency
