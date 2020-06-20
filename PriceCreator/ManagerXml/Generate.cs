@@ -10,7 +10,13 @@ namespace PriceCreator.ManagerXml.Serialization
 {
     static class  Generate
     {
-       
+        private static string DescriptionToHTML(DescriptionModel decription)
+        {
+            string result = string.Empty;
+            
+            return result.Trim();
+        }
+
         public static  void DataTransfer(SellerModel seller, string path)
         {
                 Yml_catalog catalog = new Yml_catalog(seller.Name, seller.Company, seller.Url);
@@ -60,20 +66,23 @@ namespace PriceCreator.ManagerXml.Serialization
                 }
 
                 //Описаные товара
+                var dec = string.Empty;
                 for (var i = 0; i < Offers.Count; i++)
                 {
                    
                     int count = Offers[i].Descriptions.Count();
+
                     for (var t = 0; t < count; t++)
                     {
-
-                       catalog.Shop.Offers.Offer[i].Description = new XmlDocument().CreateCDataSection(Offers[i].Descriptions[t].Text);
+                        dec+="<p>"+Offers[i].Descriptions[t].Text+"</p>\r\n";
                     }
-               
+                    XmlCDataSection xmlDescription = new XmlDocument().CreateCDataSection(dec);
+                    catalog.Shop.Offers.Offer[i].Description = xmlDescription;
+                    dec = string.Empty;
                 }
 
 
-                using (StreamWriter sw = new StreamWriter("catalog_out.xml"))
+                using (StreamWriter sw = new StreamWriter(path))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Yml_catalog));
 

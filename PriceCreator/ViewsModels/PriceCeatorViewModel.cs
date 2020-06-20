@@ -94,20 +94,42 @@ namespace PriceCreator.ViewsModels
             {
                 return new DelegateCommand((obj) =>
                 {
-                    const string Filter = "XML files (*.XML)|*.XML";
+                   
                     OpenFileDialog dlg = new OpenFileDialog();
-                    dlg.Filter = Filter;
-                    if (dlg.ShowDialog() == true)
+                    SaveFileDialog sld = new SaveFileDialog();
+                    dlg.Filter = "XML files (*.XML)|*.XML";
+                    sld.Filter = "xml files (*.xml)|*.xml";
+                    if (!isOpenFile)
                     {
-                        PathFile = dlg.FileName;
-                        initialization(PathFile);
-                        isOpenFile = true;
-                        if (SelectedIndex == -1 )
+                        if (dlg.ShowDialog() == true)
                         {
-                            SelectedIndex = 0;
+                            PathFile = dlg.FileName;
+                            initialization(PathFile);
+                            isOpenFile = true;
+                            if (SelectedIndex == -1)
+                            {
+                                SelectedIndex = 0;
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        if (sld.ShowDialog() == true)
+                        {
+                            PathFile = sld.FileName;
+                            Generate.DataTransfer(seller, PathFile);
+                            isOpenFile = false;
+                            Сlean();
+
+
                         }
 
                     }
+                    
+
+                    
+
                 });
               
             }
@@ -125,9 +147,7 @@ namespace PriceCreator.ViewsModels
                         int Id = seller.Сategories.LastOrDefault().Id + 1;//Последный адишник.
                         string name = NewCategory;
                         seller.Сategories.Add(new CategoryModel(Id, name));
-                        Generate.DataTransfer(seller, "d");
-
-
+                       
                     }
 
                 });
@@ -216,16 +236,17 @@ namespace PriceCreator.ViewsModels
                 seller.Offers.Add(new OfferModel(offer.Url, offer.Price, offer.CurrencyId, offer.CategoryId, offer.Name, offer.Vendor, offer.Stock_quantity, offer.Available, offer.Id));
             }
 
-
+            //Характеристики
             var Offers = seller.Offers;
             for (var i = 0; i < Offers.Count; i++)
             {
-                for (var t = 0; t < 6; t++)
+                int c = offers[i].Param.Count();
+                for (var t = 0; t < c; t++)
                 {
                     seller.Offers[i].Param.Add(new ParamModel(offers[i].Param[t].Name, offers[i].Param[t].Text));
                 }
             }
-
+            //Картинки
             for (var i = 0; i < Offers.Count; i++)
             {
                 int c = offers[i].Picture.Count;
@@ -254,6 +275,7 @@ namespace PriceCreator.ViewsModels
             seller.Сategories.Clear();
             seller.Currencies.Clear();
             seller.Offers.Clear();
+            OffersWithCategory.Clear();
 
         }
 

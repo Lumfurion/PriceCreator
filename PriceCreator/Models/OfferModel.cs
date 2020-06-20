@@ -120,6 +120,7 @@ namespace PriceCreator.Models
             Id = id;
         }
 
+     
     }
 
 }

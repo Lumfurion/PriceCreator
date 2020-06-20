@@ -42,15 +42,15 @@
 				<stock_quantity>10</stock_quantity>
 			</offer>
 
-			<offer available="true" id="33">
+			<offer available="true" id="3002">
 				<url>http://www.leoton.ua/ups-mx2-12-online.php</url>
 				<price>11040</price>
 				<currencyId>UAH</currencyId>
 				<categoryId>1</categoryId>
-				<picture>http://www.leoton.ua/images/mx/4343.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3434.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/3443.jpg</picture>
+				<picture>http://www.leoton.ua/images/mx/mx-1.jpg</picture>
+				<picture>http://www.leoton.ua/images/mx/mx-2.jpg</picture>
+				<picture>http://www.leoton.ua/images/mx/mx-3.jpg</picture>
+				<picture>http://www.leoton.ua/images/mx/mx-4.jpg</picture>
 				<name>Источники бесперебойного питания MX (MX2-12)</name>
 				<vendor>ГАЛС-С</vendor>
 				<description><![CDATA[
@@ -60,13 +60,13 @@
 				<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
 				<p>•Для газовых котлов всех типов</p>
 				<p>•Для Кофе-машин и бытовой аппаратуры</p>]]></description>
-				<param name="Напряжение АКБ, V">30V</param>
-				<param name="Мощность, кВт">4.0 кВт</param>
-				<param name="Пиковая мощность, кВт">5.5 кВт</param>
-				<param name="Зарядное устройство, А">до 93434 А</param>
+				<param name="Напряжение АКБ, V">12V</param>
+				<param name="Мощность, кВт">1.0 кВт</param>
+				<param name="Пиковая мощность, кВт">1.5 кВт</param>
+				<param name="Зарядное устройство, А">до 90 А</param>
 				<param name="Страна-производитель">Украина</param>
-				<param name="Гарантия">3 год</param>
-				<stock_quantity>99</stock_quantity>
+				<param name="Гарантия">1 год</param>
+				<stock_quantity>100</stock_quantity>
 			</offer>
 		</offers>
 	</shop>

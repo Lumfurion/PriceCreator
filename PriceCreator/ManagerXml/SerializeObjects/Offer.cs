@@ -22,8 +22,8 @@ namespace PriceCreator.ManagerXml.SerializeObjects
         public string Name { get; set; }
         [XmlElement(ElementName = "vendor")]
         public string Vendor { get; set; }
-        [XmlElement(ElementName = "description")]
         private string _description;
+        [XmlElement(ElementName = "description")]
         public XmlCDataSection Description 
         {
             get => new XmlDocument().CreateCDataSection(_description);

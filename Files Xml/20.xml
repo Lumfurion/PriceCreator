@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yml_catalog date="6/20/2020 5:09:38 PM">
+  <shop>
+    <name>Кальченко Гена</name>
+    <company>ГАЛС-С</company>
+    <url>http://www.leoton.ua/</url>
+    <currencies>
+      <currency id="UAH" rate="1" />
+      <currency id="$" rate="2" />
+    </currencies>
+    <categories>
+      <category id="1">Солнечные электростанции</category>
+      <category id="2">Источники бесперебойного питания</category>
+      <category id="3">Измерительная техника</category>
+      <category id="4">Пускозарядные устройства</category>
+    </categories>
+    <offers>
+      <offer available="true" id="13">
+        <url>http://www.leoton.ua/ups-mx1-online.php</url>
+        <price>6720</price>
+        <currencyId>UAH</currencyId>
+        <categoryId>2</categoryId>
+        <picture>http://www.leoton.ua/images/mx/mx-1.jpg</picture>
+        <picture>http://www.leoton.ua/images/mx/mx-2.jpg</picture>
+        <picture>http://www.leoton.ua/images/mx/mx-3.jpg</picture>
+        <picture>http://www.leoton.ua/images/mx/mx-4.jpg</picture>
+        <name>Источники бесперебойного питания MX (MX1)</name>
+        <vendor>ГАЛС-С</vendor>
+        <description><![CDATA[<p>ИБП МХ представляет собой наилучший способ защиты Вашего электрооборудования.</p>
+<p>ON-Line</p>
+<p>•Для серверов и телекоммуникационного оборудования</p>
+<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
+<p>•Для газовых котлов всех типов</p>
+<p>•Для Кофе-машин и бытовой аппаратуры</p>
+]]></description>
+        <param name="Напряжение АКБ, V">12V</param>
+        <param name="Мощность, кВт">0.5 кВт</param>
+        <param name="Пиковая мощность, кВт">0.8 кВт</param>
+        <param name="Зарядное устройство, А">до 50 А</param>
+        <param name="Страна-производитель">Украина</param>
+        <param name="Гарантия">1 год</param>
+        <stock_quantity>10</stock_quantity>
+      </offer>
+      <offer available="true" id="3002">
+        <url>http://www.leoton.ua/ups-mx2-12-online.php</url>
+        <price>11040</price>
+        <currencyId>UAH</currencyId>
+        <categoryId>1</categoryId>
+        <picture>http://www.leoton.ua/images/mx/mx-1.jpg</picture>
+        <picture>http://www.leoton.ua/images/mx/mx-2.jpg</picture>
+        <picture>http://www.leoton.ua/images/mx/mx-3.jpg</picture>
+        <picture>http://www.leoton.ua/images/mx/mx-4.jpg</picture>
+        <name>Источники бесперебойного питания MX (MX2-12)</name>
+        <vendor>ГАЛС-С</vendor>
+        <description><![CDATA[<p>ИБП МХ представляет собой наилучший способ защиты Вашего электрооборудования.</p>
+<p>ON-Line</p>
+<p>•Для серверов и телекоммуникационного оборудования</p>
+<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
+<p>•Для газовых котлов всех типов</p>
+<p>•Для Кофе-машин и бытовой аппаратуры</p>
+]]></description>
+        <param name="Напряжение АКБ, V">12V</param>
+        <param name="Мощность, кВт">1.0 кВт</param>
+        <param name="Пиковая мощность, кВт">1.5 кВт</param>
+        <param name="Зарядное устройство, А">до 90 А</param>
+        <param name="Страна-производитель">Украина</param>
+        <param name="Гарантия">1 год</param>
+        <stock_quantity>100</stock_quantity>
+      </offer>
+      <offer available="true" id="1">
+        <url>https://yummyanime.club/catalog/item/voennaya-hronika-malen-koj-devochki</url>
+        <price>5000</price>
+        <currencyId>UAN</currencyId>
+        <categoryId>3</categoryId>
+        <name>Сани струсы</name>
+        <vendor>Brazers corporeded</vendor>
+        <description><![CDATA[<p>22222222222222</p>
+<p>22222222222222222</p>
+<p>22222222222222222</p>
+<p>22222222222222222</p>
+]]></description>
+        <param name="22">22</param>
+        <param name="22">22</param>
+        <param name="22">22</param>
+        <param name="22">22</param>
+        <stock_quantity>200</stock_quantity>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
