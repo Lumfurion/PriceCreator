@@ -20,11 +20,11 @@
                         <RowDefinition Height="31*"/>
                         <RowDefinition Height="39*"/>
                         <RowDefinition Height="38*"/>
-                        <RowDefinition Height="162*"/>
-                        <RowDefinition Height="162*"/>
-                        <RowDefinition Height="31*"/>
-                        <RowDefinition Height="74*"/>
-                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="38*"/>
+                        <RowDefinition Height="39*"/>
+                        <RowDefinition Height="39*"/>
+                        <RowDefinition Height="311*"/>
+                        <RowDefinition Height="34*"/>
                     </Grid.RowDefinitions>
                     <!--Имя товара-->
                     <Grid >
@@ -33,7 +33,7 @@
                             <ColumnDefinition Width="189*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Название:"  Style="{StaticResource BaseText}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                        <TextBox Grid.Column="1" Margin="1" Tag="Введите название товара" Text="{Binding offer.Name}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" />
+                        <TextBox Grid.Column="1" Margin="1" Tag="Введите название товара" Text="{Binding offer.Name,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" />
                     </Grid>
                     <!--Адрес товара-->
                     <Grid Grid.Row="1" >
@@ -42,7 +42,7 @@
                             <ColumnDefinition Width="189*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Адрес:"  Style="{StaticResource BaseText}" VerticalAlignment="Center" Height="19"  HorizontalAlignment="Right" />
-                        <TextBox Grid.Column="1" Margin="1" Tag="Введите адрес URL" Text="{Binding offer.Url}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" />
+                        <TextBox Grid.Column="1" Margin="1" Tag="Введите адрес URL" Text="{Binding offer.Url,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" />
                     </Grid>
                     <!--Продавец-->
                     <Grid Grid.Row="2" >
@@ -51,7 +51,7 @@
                             <ColumnDefinition Width="189*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Продавец:"  Style="{StaticResource BaseText}" VerticalAlignment="Center"  HorizontalAlignment="Right" />
-                        <TextBox Grid.Column="1" Margin="1" Tag="Введите продовеца товара" Text="{Binding offer.Vendor}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" Margin="1" Tag="Введите продовеца товара" Text="{Binding offer.Vendor,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"/>
                     </Grid>
 
                     <!--Цена товара-->
@@ -67,8 +67,14 @@
                                 <ColumnDefinition Width="72*"/>
                                 <ColumnDefinition Width="169*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox  Tag="Введите цену" Margin="1"  Text="{Binding offer.Price}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"  />
-                            <TextBox Grid.Column="1" Margin="1"  Tag="Валюта" Text="{Binding offer.CurrencyId}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"/>
+                            <TextBox  Tag="Введите цену" Margin="1"  Text="{Binding offer.Price,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"  />
+                            <ComboBox   ItemsSource="{Binding Currencies }" SelectedItem="{Binding CurrencySelected}" Grid.Column="1" Margin="1"  SelectedIndex="{Binding SelectedIndex}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Id}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </Grid>
                     </Grid>
 
@@ -85,8 +91,8 @@
                                 <ColumnDefinition Width="17*"/>
                                 <ColumnDefinition Width="159*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="есть товар в наличии"   Style="{StaticResource BaseText}" VerticalAlignment="Center" Height="19" Margin="3,10"/>
-                            <CheckBox  IsChecked="{Binding offer.Available}" Grid.Column="1"   VerticalAlignment="Center" Height="15" Margin="0,12" HorizontalAlignment="Center"/>
+                            <TextBlock Text="есть товар в наличии"   Style="{StaticResource BaseText}" VerticalAlignment="Center" Margin="3,10"/>
+                            <CheckBox  IsChecked="{Binding offer.Available,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"   VerticalAlignment="Center"  Margin="0,12" HorizontalAlignment="Center"/>
                         </Grid>
                     </Grid>
 
@@ -146,7 +152,14 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="39*"/>
                                         </Grid.RowDefinitions>
-                                        <TextBox Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" Margin="1" Tag="Введите описание товара" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="739*"/>
+                                                <ColumnDefinition Width="53*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Margin="1" Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" Tag="Введите описание товара" />
+                                            <Button  CommandParameter="{Binding}" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.DeleteDescriptions}" Width="20" Height="20" FontSize="10" Grid.Column="1" Style="{StaticResource  ButtonDeleteEllipse}" />
+                                        </Grid>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -157,7 +170,7 @@
                              Content="Добавить описание товара"
                              Style="{StaticResource ButtonAdd}" />
                     </StackPanel>
-                    <!--Описание товара-->
+                    <!--Параметры товара-->
                     <StackPanel Grid.Row="7" >
                         <ItemsControl ItemsSource="{Binding offer.Param}">
                             <ItemsControl.ItemTemplate>
@@ -194,12 +207,12 @@
                             <ColumnDefinition Width="251*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Количество товара:"  Style="{StaticResource BaseText}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                        <TextBox Grid.Column="1" Margin="1" Tag="Шт" Text="{Binding offer.Stock_quantity}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"   />
+                        <TextBox Grid.Column="1" Margin="1" Tag="Шт" Text="{Binding offer.Stock_quantity,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"   />
                     </Grid>
 
                     <!--Сохранить кнопка-->
                     <Button  Grid.Row="10" Margin="2" Style="{StaticResource ButtonAdd}"
-                     Content="Дабавить товар" Command="{Binding AddProduct}"  CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                     Content="Добавить товар" Command="{Binding AddProduct}"  CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"  />
 
 

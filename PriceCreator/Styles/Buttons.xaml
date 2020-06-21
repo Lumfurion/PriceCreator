@@ -160,7 +160,32 @@
     </Style>
 
 
+    <Style TargetType="Button" x:Key="ButtonDeleteEllipse" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="Background"  Value="#FFF90A4B" />
+        <Setter  Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
 
+                    <Border CornerRadius="30"   Background="{TemplateBinding Background}">
+                        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{TemplateBinding FontSize}"  Text="🗙" />
+                    </Border>
 
-
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="Background" Value="#FFF90A4B" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="#FFE87070" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="#FFD67369" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{StaticResource DarkBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

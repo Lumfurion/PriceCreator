@@ -1,5 +1,6 @@
 ﻿using PriceCreator.Models;
 using PriceCreator.Views;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -8,6 +9,33 @@ namespace PriceCreator.ViewsModels
     class EditProductViewModel:ChangeProperty
     { 
         public OfferModel offer { get; set; }
+        public ObservableCollection<CurrencyModel> Currencies { get; set; }
+        private CurrencyModel currencySelected { get; set; }
+        public CurrencyModel CurrencySelected
+        {
+            get { return currencySelected; }
+            set { currencySelected = value; offer.CurrencyId = currencySelected.Id; }
+        }
+        int selectedIndex { get; set; }
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
+        }
+
+        public EditProductViewModel() { }
+        
+        public EditProductViewModel(OfferModel offer, ObservableCollection<CurrencyModel> currencies)
+        {
+            this.offer = offer;
+            Currencies = currencies;
+            SelectedIndex = 0;
+        }
+
         public ICommand AddImage
         {
             get
@@ -29,6 +57,19 @@ namespace PriceCreator.ViewsModels
                 return new DelegateCommand((obj) =>
                 {
                     offer.Descriptions.Add(new DescriptionModel());
+                });
+            }
+        }
+
+
+        public ICommand DeleteDescriptions
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    DescriptionModel descriptionModel = (DescriptionModel)obj;
+                    offer.Descriptions.Remove(descriptionModel);
                 });
             }
         }

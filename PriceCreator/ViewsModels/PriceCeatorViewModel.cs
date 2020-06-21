@@ -165,7 +165,7 @@ namespace PriceCreator.ViewsModels
                     AddProductView viewAddProduct = new AddProductView();
                     AddProductViewModel vmaddProduct = new AddProductViewModel(SelectCategory.Id, seller, OffersWithCategory);
                     viewAddProduct.DataContext = vmaddProduct;
-                    viewAddProduct.Show();
+                    viewAddProduct.ShowDialog();
 
                 }, (obj) => SelectCategory != null);
             }
@@ -179,7 +179,7 @@ namespace PriceCreator.ViewsModels
                 return new DelegateCommand((obj) =>
                 {
                     EditProductView viewEditProduct = new EditProductView();
-                    EditProductViewModel vmEditProduct = new EditProductViewModel() { offer= SelectOffer};
+                    EditProductViewModel vmEditProduct = new EditProductViewModel(SelectOffer,seller.Currencies);
                     viewEditProduct.DataContext = vmEditProduct;
                     viewEditProduct.ShowDialog();
                 }, (obj) => SelectOffer != null);

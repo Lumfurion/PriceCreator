@@ -7,16 +7,33 @@ using System.Windows.Input;
 
 namespace PriceCreator.ViewsModels
 {
-    class AddProductViewModel:ChangeProperty
+    class AddProductViewModel : ChangeProperty
     {
         public OfferModel offer { get; set; }
+        public ObservableCollection<CurrencyModel> Currencies { get; set; }
+        private CurrencyModel currencySelected { get; set; }
+        public CurrencyModel CurrencySelected
+        {
+            get { return currencySelected; }
+            set { currencySelected = value; offer.CurrencyId = currencySelected.Id; }
+        }
+        int selectedIndex { get; set; }
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
+        }
+
         readonly SellerModel seller;
         readonly int category;
         readonly ObservableCollection<OfferModel> offers;
 
-        public AddProductViewModel() {  }
-       
 
+        public AddProductViewModel() {  }
         public AddProductViewModel(int category, SellerModel seller, ObservableCollection<OfferModel> offers)
         {
             offer = new OfferModel();
@@ -31,10 +48,12 @@ namespace PriceCreator.ViewsModels
             this.seller = seller;
             this.category = category;
             this.offers = offers;
+            Currencies = seller.Currencies;
+            SelectedIndex = 0;
+
         }
 
-
-
+   
         public ICommand AddImage
         {
             get
@@ -56,6 +75,19 @@ namespace PriceCreator.ViewsModels
                 return new DelegateCommand((obj) =>
                 {
                     offer.Descriptions.Add(new DescriptionModel());
+                });
+            }
+        }
+
+        public ICommand DeleteDescriptions
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    DescriptionModel descriptionModel = (DescriptionModel)obj;
+                    offer.Descriptions.Remove(descriptionModel);
+
                 });
             }
         }

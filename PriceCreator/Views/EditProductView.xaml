@@ -66,7 +66,13 @@
                                 <ColumnDefinition Width="169*"/>
                             </Grid.ColumnDefinitions>
                             <TextBox  Tag="Введите цену" Margin="1"  Text="{Binding offer.Price,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"  />
-                            <TextBox Grid.Column="1" Margin="1"  Tag="Валюта" Text="{Binding offer.CurrencyId,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center"/>
+                            <ComboBox   ItemsSource="{Binding Currencies }" SelectedItem="{Binding CurrencySelected}" Grid.Column="1" Margin="1"  SelectedIndex="{Binding SelectedIndex}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Id}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </Grid>
                     </Grid>
 
@@ -144,7 +150,14 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="39*"/>
                                         </Grid.RowDefinitions>
-                                        <TextBox Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" Margin="1" Tag="Введите описание товара" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="739*"/>
+                                                <ColumnDefinition Width="53*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Margin="1" Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" Tag="Введите описание товара" />
+                                            <Button  CommandParameter="{Binding}" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.DeleteDescriptions}" Width="20" Height="20" FontSize="10" Grid.Column="1" Style="{StaticResource  ButtonDeleteEllipse}" />
+                                        </Grid>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -155,7 +168,7 @@
                              Content="Добавить описание товара"
                              Style="{StaticResource ButtonAdd}" />
                     </StackPanel>
-                    <!--Описание товара-->
+                    <!--Параметры товара-->
                     <StackPanel Grid.Row="7" >
                         <ItemsControl ItemsSource="{Binding offer.Param}">
                             <ItemsControl.ItemTemplate>
