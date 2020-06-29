@@ -36,6 +36,28 @@ namespace PriceCreator.ViewsModels
             SelectedIndex = 0;
         }
 
+        public ICommand OpenImage
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    string image = (string)obj;
+                    if (image != null)
+                    {
+                        var iv = new ImageViewer()
+                        {
+                            DataContext = new ImageViewerViewModel
+                            {
+                                Image = image
+                            }
+                        };
+                        iv.ShowDialog();
+                    }
+                });
+            }
+        }
+
         public ICommand AddImage
         {
             get
@@ -81,6 +103,19 @@ namespace PriceCreator.ViewsModels
                 return new DelegateCommand((obj) =>
                 {
                     offer.Param.Add(new ParamModel());
+
+                });
+            }
+        }
+
+        public ICommand DeleteParam
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    ParamModel paramModel = (ParamModel)obj;
+                    offer.Param.Remove(paramModel);
 
                 });
             }

@@ -107,7 +107,14 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Margin="5">
-                                        <Image Width="100" Height="100" Source="{Binding FallbackValue='http://placehold.it/100x100/302e31'}" />
+                                        <Image Width="100" Height="100" Source="{Binding FallbackValue='http://placehold.it/100x100/302e31'}">
+                                            <Image.InputBindings>
+                                                <MouseBinding
+                                                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.OpenImage}"
+                                                  CommandParameter="{Binding}"
+                                                  Gesture="LeftClick" />
+                                            </Image.InputBindings>
+                                        </Image>
 
                                         <Border
                                             Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
@@ -179,15 +186,16 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="39*"/>
                                         </Grid.RowDefinitions>
-                                        <Grid>
+                                        <Grid >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="191*"/>
-                                                <ColumnDefinition Width="205*"/>
+                                                <ColumnDefinition Width="382*"/>
+                                                <ColumnDefinition Width="357*"/>
+                                                <ColumnDefinition Width="53*"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBox  Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource  BaseTextBox}"  VerticalAlignment="Center" Margin="1" Tag="Введите xарактеристику"  />
-                                            <TextBox Grid.Column="1" Text="{Binding  Text,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}"  VerticalAlignment="Center" Margin="1" Tag="Введите  значение"  />
+                                            <TextBox  Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource  BaseTextBox}"  VerticalAlignment="Center" Margin="1" Tag="Введите xарактеристику"/>
+                                            <TextBox Grid.Column="1" Text="{Binding  Text,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource  BaseTextBox}"  VerticalAlignment="Center" Margin="1" Tag="Введите  значение"/>
+                                            <Button  CommandParameter="{Binding}" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.DeleteParam}" Width="20" Height="20" FontSize="10" Grid.Column="2" Style="{StaticResource  ButtonDeleteEllipse}" />
                                         </Grid>
-
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -195,7 +203,7 @@
                         <Button
                              Margin="4"
                              Command="{Binding AddParam}"
-                             Content="Добавить описание товара"
+                             Content="Добавить параметры товара"
                              Style="{StaticResource ButtonAdd}" />
                     </StackPanel>
 

@@ -85,6 +85,7 @@
     <Compile Include="ViewsModels\DelegateCommand.cs" />
     <Compile Include="Models\ChangeProperty.cs" />
     <Compile Include="ViewsModels\EditProductViewModel.cs" />
+    <Compile Include="ViewsModels\ImageViewerViewModel.cs" />
     <Compile Include="ViewsModels\PriceCeatorViewModel.cs" />
     <Compile Include="Views\AddImageView.xaml.cs">
       <DependentUpon>AddImageView.xaml</DependentUpon>
@@ -94,6 +95,9 @@
     </Compile>
     <Compile Include="Views\EditProductView.xaml.cs">
       <DependentUpon>EditProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageViewer.xaml.cs">
+      <DependentUpon>ImageViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PriceCeatorView.xaml.cs">
       <DependentUpon>PriceCeatorView.xaml</DependentUpon>
@@ -155,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImageViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
