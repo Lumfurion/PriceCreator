@@ -84,15 +84,13 @@
         </GroupBox>
         <!--Products-->
         <GroupBox Grid.Row="2"  Header="Products" FontSize="16" Margin="16,0,10,9" Background="#DFE5EB" Foreground="#005565" BorderBrush="#005565">
-
             <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <ListBox Background="#DFE5EB"  ItemsSource="{Binding  OffersWithCategory}" SelectedItem="{Binding SelectOffer}">
+                <ListBox  BorderThickness="0" Background="#DFE5EB"  ItemsSource="{Binding  OffersWithCategory}" SelectedItem="{Binding SelectOffer}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="91*"/>
-                                    <RowDefinition Height="878*"/>
                                 </Grid.RowDefinitions>
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -100,43 +98,34 @@
                                         <RowDefinition Height="23*"/>
                                         <RowDefinition Height="21*"/>
                                     </Grid.RowDefinitions>
+                                    <!--Имя товара и Цена-->
                                     <Grid >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="23*"/>
-                                            <ColumnDefinition Width="115*"/>
                                             <ColumnDefinition Width="654*"/>
                                         </Grid.ColumnDefinitions>
                                         <CheckBox  IsChecked="{ Binding Available}" Margin="5,14,0,12"  VerticalAlignment="Center"/>
-                                        <TextBlock  Grid.Column="1"  FontSize="20"  Text=" Имя товара:" VerticalAlignment="Center" Margin="0,7"  />
-                                        <TextBlock  Grid.Column="2"  FontSize="20"  Text="{Binding Name}" VerticalAlignment="Center" />
+                                        <TextBlock  Grid.Column="1"  FontSize="20"  Text="{Binding  Name,StringFormat=Имя товара: {0}}" VerticalAlignment="Center" Margin="0,7"  />
                                     </Grid>
 
+                                    <!--Цена,Количество товара тд..-->
                                     <Grid  Grid.Row="1" >
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="54*"/>
-                                            <ColumnDefinition Width="90*"/>
+                                            <ColumnDefinition Width="144*"/>
                                             <ColumnDefinition Width="28*"/>
-                                            <ColumnDefinition Width="95*"/>
-                                            <ColumnDefinition Width="96*"/>
-                                            <ColumnDefinition Width="194*"/>
-                                            <ColumnDefinition Width="48*"/>
+                                            <ColumnDefinition Width="191*"/>
+                                            <ColumnDefinition Width="241*"/>
                                             <ColumnDefinition Width="91*"/>
                                             <ColumnDefinition Width="45*"/>
                                             <ColumnDefinition Width="51*"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock  Text="Цена:"    FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                                        <TextBlock Grid.Column="1"  Text="{Binding Price}"    FontSize="20" VerticalAlignment="Center" />
-                                        <TextBlock Grid.Column="2"  Text="{Binding CurrencyId}"    FontSize="20" VerticalAlignment="Center"  />
-                                        <TextBlock Grid.Column="3"  Text=" Продавец:"    FontSize="20" VerticalAlignment="Center"   />
-                                        <TextBlock Grid.Column="4"  Text="{Binding Vendor}"    FontSize="20" VerticalAlignment="Center"  />
-                                        <TextBlock Grid.Column="5"  Text="  Количество товаров:"    FontSize="20" VerticalAlignment="Center" />
-                                        <TextBlock Grid.Column="6"  Text="{Binding Stock_quantity}"    FontSize="20" VerticalAlignment="Center"  />
-                                        <TextBlock Grid.Column="7"  Text="  Id товара:"    FontSize="20" VerticalAlignment="Center"   />
-                                        <TextBlock Grid.Column="8"  Text="{Binding Id}"    FontSize="20" VerticalAlignment="Center" />
-                                    </Grid>
-                                    <!--<TextBlock Grid.Row="2"  Text="Напряжение АКБ,12V  Мощность,1.0 кВт  Пиковая мощность,1.5 кВт Зарядное устройство, А до 90А    Страна-производитель Украина    Гарантия 1 год "    FontSize="20" VerticalAlignment="Center"  />-->
+                                        <TextBlock Grid.Column="0"  Text="{Binding Price,StringFormat=Цена:{0}}"  Margin="1"  FontSize="20" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1"  Text="{Binding CurrencyId}"    FontSize="20" VerticalAlignment="Center"  Margin="1" />
+                                        <TextBlock Grid.Column="2"  Text="{Binding Vendor,StringFormat=Продавец:{0}}"     FontSize="20" VerticalAlignment="Center"  Margin="1" />
+                                        <TextBlock Grid.Column="3"  Text="{Binding Stock_quantity,StringFormat=Количество товаров:{0}}" FontSize="20" VerticalAlignment="Center"  Margin="1"/>
+                                        <TextBlock Grid.Column="4"  Text="{Binding Id,StringFormat=Id товара:{0}}"    FontSize="20" VerticalAlignment="Center"  Margin="1"/>
+                                   </Grid>
                                 </Grid>
-
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

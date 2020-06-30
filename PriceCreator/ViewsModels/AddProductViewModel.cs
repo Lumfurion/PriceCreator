@@ -107,8 +107,8 @@ namespace PriceCreator.ViewsModels
                 return new DelegateCommand((obj) =>
                 {
                     DescriptionModel descriptionModel = (DescriptionModel)obj;
-                    offer.Descriptions.Remove(descriptionModel);
-
+                    var index = offer.Descriptions.IndexOf(descriptionModel);// Получаем индекс  описания товара.
+                    offer.Descriptions.RemoveAt(index);
                 });
             }
         }
@@ -131,8 +131,8 @@ namespace PriceCreator.ViewsModels
             {
                 return new DelegateCommand((obj) =>
                 {   ParamModel paramModel = (ParamModel)obj;
-                    offer.Param.Remove(paramModel);
-
+                    var index = offer.Param.IndexOf(paramModel);// Получаем индекс  параметра товара.
+                    offer.Param.RemoveAt(index);
                 });
             }
         }
@@ -145,7 +145,6 @@ namespace PriceCreator.ViewsModels
                 return new DelegateCommand((obj) =>
                 {
                     string image = (string)obj;
-
                     if (image != null)
                     {
                         offer.Picture.Remove(image);
