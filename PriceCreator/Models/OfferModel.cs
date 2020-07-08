@@ -1,9 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using PriceCreator.Services.Validation;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows;
 
 namespace PriceCreator.Models
 {
-    class OfferModel:ChangeProperty
+    class OfferModel:ChangeProperty,IDataErrorInfo
     {
+        #region Cвойства
         string url { get; set; }
         public string Url
         {
@@ -47,9 +52,7 @@ namespace PriceCreator.Models
                 OnPropertyChanged("CategoryId");
             }
         }
-
         public ObservableCollection<string> Picture { get; set; } = new ObservableCollection<string>();
-       
         string name { get; set; }
         public string Name
         {
@@ -105,7 +108,43 @@ namespace PriceCreator.Models
                 OnPropertyChanged("Id");
             }
         }
+        #endregion
 
+        #region Проверка свойств
+        string er { get; set; }
+        public string Error
+        {
+            get { return er; }
+        }
+
+        public string this[string propertyName]
+        {
+            get
+            {
+                string validationResult = null;
+                switch (propertyName)
+                {
+                    case "Name":
+                        validationResult = Validation.Name(Name);
+                        break;
+                    case "Url":
+                        validationResult = Validation.Ui(Url);
+                        break;
+                    case "Price":
+                        validationResult = Validation.Price(Price);
+                        break;
+                    case "Vendor":
+                        validationResult = Validation.Vendor(Vendor);
+                        break;
+                    case "Stock_quantity":
+                        validationResult = Validation.StockQuantity(Stock_quantity);
+                        break;
+                    default:throw new ApplicationException("Неизвестное свойство проверяется модели OfferModel.");
+                }
+                return validationResult;
+            }
+        }
+        #endregion
         public OfferModel(){}
         public OfferModel(string url, decimal price, string currencyId, int categoryId, string name, string vendor, int stock_quantity, bool available, int id)
         {
@@ -119,6 +158,8 @@ namespace PriceCreator.Models
             Available = available;
             Id = id;
         }
+
+
 
      
     }

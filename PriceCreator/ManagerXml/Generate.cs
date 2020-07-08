@@ -10,13 +10,7 @@ namespace PriceCreator.ManagerXml.Serialization
 {
     static class  Generate
     {
-        private static string DescriptionToHTML(DescriptionModel decription)
-        {
-            string result = string.Empty;
-            
-            return result.Trim();
-        }
-
+       
         public static  void DataTransfer(SellerModel seller, string path)
         {
                 Yml_catalog catalog = new Yml_catalog(seller.Name, seller.Company, seller.Url);

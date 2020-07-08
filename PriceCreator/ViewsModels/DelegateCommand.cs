@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Input;
 namespace PriceCreator.ViewsModels
 {   
@@ -11,7 +12,7 @@ namespace PriceCreator.ViewsModels
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-      
+        [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {
             if (canExecute != null)

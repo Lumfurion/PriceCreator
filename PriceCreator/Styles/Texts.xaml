@@ -26,6 +26,11 @@
     </Style>
     <!--Стиль для TextBox-->
     <Style x:Key="BaseTextBox" TargetType="TextBox">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
         <Setter Property="FontFamily" Value="{StaticResource BaseFont}" />
         <Setter Property="FontSize" Value="{StaticResource Regular}" />
         <Setter Property="BorderThickness" Value="0" />

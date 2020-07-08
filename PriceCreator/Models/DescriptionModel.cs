@@ -1,11 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using PriceCreator.Services.Validation;
+using System;
+using System.ComponentModel;
+
+
 namespace PriceCreator.Models
 {
-    class DescriptionModel:ChangeProperty
+    class DescriptionModel:ChangeProperty,IDataErrorInfo
     {
-        private ObservableCollection<string> features = new ObservableCollection<string>();
+      
         private string text { get; set; }
-
         public string Text
         {
             get { return text; }
@@ -15,27 +18,35 @@ namespace PriceCreator.Models
                 OnPropertyChanged(nameof(Text));
             }
         }
-        public ObservableCollection<string> Features
-        {
-            get { return features; }
-            set
-            {
-                features = value;
-                OnPropertyChanged(nameof(Features));
-            }
-        }
         public DescriptionModel() { }
-       
         public DescriptionModel(string text)
         {
             Text = text;
         }
 
-        public DescriptionModel(string text, ObservableCollection<string> features)
+        #region Проверка свойств
+        string er { get; set; }
+        public string Error
         {
-            Text = text;
-            Features = features;
+            get { return er; }
         }
+
+        public string this[string propertyName]
+        {
+            get
+            {
+                string validationResult = null;
+                switch (propertyName)
+                {
+                    case "Text":
+                        validationResult = Validation.Text(Text);
+                        break;
+                    default: throw new ApplicationException("Неизвестное свойство проверяется модели DescriptionModel.");
+                }
+                return validationResult;
+            }
+        }
+        #endregion
 
     }
 }

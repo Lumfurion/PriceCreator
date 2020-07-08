@@ -170,33 +170,6 @@
 				<param name="Гарантия">1 год</param>
 				<stock_quantity>100</stock_quantity>
 			</offer>
-
-			<offer available="true" id="3006">
-				<url>http://www.leoton.ua/ups-mx3-online.php</url>
-				<price>19020</price>
-				<currencyId>UAH</currencyId>
-				<categoryId>4</categoryId>
-				<picture>http://www.leoton.ua/images/mx/mx-1.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/mx-2.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/mx-3.jpg</picture>
-				<picture>http://www.leoton.ua/images/mx/mx-4.jpg</picture>
-				<name>ggg (MX3-48)</name>
-				<vendor>ГАЛС-С</vendor>
-				<description><![CDATA[
-				<p>ИБП МХ представляет собой наилучший способ защиты Вашего электрооборудования.</p>
-				<p>ON-Line</p>
-				<p>•Для серверов и телекоммуникационного оборудования</p>
-				<p>•Для Систем ТВ, аудио аппаратуры, ПК и серверов, сетевой аппаратуры</p>
-				<p>•Для газовых котлов всех типов</p>
-				<p>•Для Кофе-машин и бытовой аппаратуры</p>]]></description>
-				<param name="Напряжение АКБ, V">48V</param>
-				<param name="Мощность, кВт">2.2 кВт</param>
-				<param name="Пиковая мощность, кВт">13.6 кВт</param>
-				<param name="Зарядное устройство, А">до 50 А</param>
-				<param name="Страна-производитель">Украина</param>
-				<param name="Гарантия">1 год</param>
-				<stock_quantity>100</stock_quantity>
-			</offer>
 		</offers>
 	</shop>
 </yml_catalog>
