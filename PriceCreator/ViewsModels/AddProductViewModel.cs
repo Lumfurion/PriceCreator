@@ -307,6 +307,15 @@ namespace PriceCreator.ViewsModels
             };
             #endregion
 
+            Descriptions.Add(new DescriptionModel());
+            Descriptions.Add(new DescriptionModel());
+            Descriptions.Add(new DescriptionModel());
+            Descriptions.Add(new DescriptionModel());
+            Param.Add(new ParamModel());
+            Param.Add(new ParamModel());
+            Param.Add(new ParamModel());
+            Param.Add(new ParamModel());
+
             this.seller = seller;
             this.category = category;
             this.offers = offers;

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:v="clr-namespace:PriceCreator.Services.Validation"
          xmlns:interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
-        Title="Изменение товаров" Height="770.705" Width="547.746" 
+        Title="Изменение товаров" Height="770.705" Width="600" 
         WindowStartupLocation="CenterScreen">
     <Grid>
         <GroupBox   Header="Edit product" FontSize="16" Margin="20" Background="#DFE5EB" Foreground="#005565" BorderBrush="#005565" >

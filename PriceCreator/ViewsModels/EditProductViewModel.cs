@@ -32,6 +32,14 @@ namespace PriceCreator.ViewsModels
         #endregion
 
         #region Свойства  EditProductViewModel
+        public int IndexOffer;
+        public int indexOffersWithCategory;
+        readonly SellerModel Seller;
+        /// <summary>
+        /// Номер категории.
+        /// </summary>
+        readonly ObservableCollection<OfferModel> Offers;
+
         /// <summary>
         /// Товар который будет изменен.
         /// </summary>
@@ -98,7 +106,6 @@ namespace PriceCreator.ViewsModels
             }
         }
 
-
         public decimal Price
         {
             get { return (offer != null) ? offer.Price : 0; }
@@ -139,11 +146,9 @@ namespace PriceCreator.ViewsModels
             }
         }
 
-
-
         public ObservableCollection<string> Picture
         {
-            get { return (offer != null) ? offer.Picture : null; }
+            get {  return (offer != null) ? offer.Picture : null; }
             set
             {
                 if (offer.Picture != value)
@@ -153,8 +158,6 @@ namespace PriceCreator.ViewsModels
                 }
             }
         }
-
-
 
         public ObservableCollection<DescriptionModel> Descriptions
         {
@@ -181,15 +184,15 @@ namespace PriceCreator.ViewsModels
                 }
             }
         }
-
         #endregion
 
         public EditProductViewModel() { }
-        public EditProductViewModel(OfferModel offer, ObservableCollection<CurrencyModel> currencies)
+        public EditProductViewModel(OfferModel offer, SellerModel seller, ObservableCollection<OfferModel> offers)
         {
-            this.offer = offer;
-            Currencies = currencies;
-            SelectedIndex = 0;
+           
+            this.offer = new OfferModel();
+            Seller = seller;
+            Offers = offers;
 
             #region Валидации данных
             validProperties = new Dictionary<string, bool>();//нужен для того чтобы включить кнопку добавленные если все данные будут коректные.
@@ -201,10 +204,9 @@ namespace PriceCreator.ViewsModels
             validProperties.Add("Picture", false);
             validProperties.Add("Descriptions", false);
             validProperties.Add("Param", false);
-            
+          
             //Проверки на валидность ввода Picture Descriptions Param.
-            if (Picture != null && Descriptions != null && Param != null)
-            {
+
                 Picture.CollectionChanged += (s, e) =>
                 {
                     validProperties["Picture"] = Picture.Count() > 0 ? true : false;
@@ -264,6 +266,7 @@ namespace PriceCreator.ViewsModels
                             var name = Validation.NameBoolParam(item.Name);
                             var text = Validation.TextBoolParam(item.Text);
                             validProperties["Param"] = (name && text) ? false : true;
+                            isEmpty = (name && text) ? false : true;
                             item.PropertyChanged += (sender, argument) => //Проходимся по свойствам модели.
                             {
                                 int nameisvalid = 0;
@@ -296,10 +299,23 @@ namespace PriceCreator.ViewsModels
                     validProperties["Param"] = (Param.Count > 0 && isEmpty != false) ? true : false;
                     ValidateProperties();
                 };
-            }
+
             #endregion
 
-            
+            #region Инициализация данных чтобы сработало событие CollectionChanged.
+            Url = offer.Url;
+            Price = offer.Price;
+            this.offer.CategoryId = offer.CategoryId;
+            Name = offer.Name;
+            Vendor = offer.Vendor;
+            Stock_quantity = offer.Stock_quantity;
+            Available = offer.Available;
+            this.offer.Id = offer.Id;
+            foreach (var pic in offer.Picture) Picture.Add(pic);
+            foreach (var des in offer.Descriptions) Descriptions.Add(des);
+            foreach (var par in offer.Param) Param.Add(par);
+            #endregion
+            SelectedIndex = 0;
         }
         #region Каманды
         public ICommand OpenImage
@@ -415,6 +431,8 @@ namespace PriceCreator.ViewsModels
                 {
                     Window win = (Window)obj;
                     offer.CurrencyId = currencySelected.Id;
+                    Seller.Offers[indexOffersWithCategory] = offer;
+                    Offers[IndexOffer] = offer;
                     win.Close();
                 });
             }

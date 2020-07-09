@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using PriceCreator.Views;
 using PriceCreator.ManagerXml.DeserializeObjects;
 using PriceCreator.ManagerXml.Serialization;
+using System.Windows;
 
 namespace PriceCreator.ViewsModels
 {
@@ -25,7 +26,16 @@ namespace PriceCreator.ViewsModels
             }
         }
         public ObservableCollection<OfferModel> OffersWithCategory { get; set; }
-        public OfferModel SelectOffer { get; set; }
+        public OfferModel selectOffer { get; set; }
+        public OfferModel SelectOffer
+        {
+            get { return selectOffer; }
+            set
+            {
+                selectOffer = value;
+                OnPropertyChanged("SelectOffer");
+            }
+        }
         public SellerModel seller { get; set; }
         bool isOpenFile { get; set; } = false;
         string pathFile { get; set; }
@@ -166,7 +176,7 @@ namespace PriceCreator.ViewsModels
                     AddProductViewModel vmaddProduct = new AddProductViewModel(SelectCategory.Id, seller, OffersWithCategory);
                     viewAddProduct.DataContext = vmaddProduct;
                     viewAddProduct.ShowDialog();
-
+                    SelectOffer = OffersWithCategory.FirstOrDefault();
                 }, (obj) => SelectCategory != null);
             }
         }
@@ -178,8 +188,19 @@ namespace PriceCreator.ViewsModels
             {
                 return new DelegateCommand((obj) =>
                 {
+                    var  indexOffersWithCategory = seller.Offers.IndexOf(SelectOffer);
+                    MessageBox.Show(indexOffersWithCategory.ToString());
+
+                    var indexOffer = OffersWithCategory.IndexOf(SelectOffer);
+                    MessageBox.Show(indexOffer.ToString());
+
                     EditProductView viewEditProduct = new EditProductView();
-                    EditProductViewModel vmEditProduct = new EditProductViewModel(SelectOffer,seller.Currencies);
+                    EditProductViewModel vmEditProduct = new EditProductViewModel(SelectOffer, seller, OffersWithCategory)
+                    {   
+                        Currencies = seller.Currencies,
+                        IndexOffer = indexOffer,
+                        indexOffersWithCategory = indexOffersWithCategory
+                    };
                     viewEditProduct.DataContext = vmEditProduct;
                     viewEditProduct.ShowDialog();
                 }, (obj) => SelectOffer != null);
@@ -194,7 +215,7 @@ namespace PriceCreator.ViewsModels
                 {   
                     seller.Offers.Remove(SelectOffer);//удаление товара из модели.
                     OffersWithCategory.Remove(SelectOffer);//удаление из временного списка.
-                    SelectOffer = null;
+                    SelectOffer = OffersWithCategory.FirstOrDefault();
                 }, (obj) => SelectOffer != null);
             }
         }
