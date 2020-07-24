@@ -189,11 +189,7 @@ namespace PriceCreator.ViewsModels
                 return new DelegateCommand((obj) =>
                 {
                     var  indexOffersWithCategory = seller.Offers.IndexOf(SelectOffer);
-                    MessageBox.Show(indexOffersWithCategory.ToString());
-
                     var indexOffer = OffersWithCategory.IndexOf(SelectOffer);
-                    MessageBox.Show(indexOffer.ToString());
-
                     EditProductView viewEditProduct = new EditProductView();
                     EditProductViewModel vmEditProduct = new EditProductViewModel(SelectOffer, seller, OffersWithCategory)
                     {   

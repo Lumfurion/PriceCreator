@@ -2,10 +2,14 @@
 using System.Xml.Serialization;
 
 namespace PriceCreator.ManagerXml.SerializeObjects
-{
+{   /// <summary>
+    /// Список предложений магазина. 
+    /// </summary>
     [XmlRoot(ElementName = "offers")]
     public class Offers
-    {
+    {   /// <summary>
+        /// Карточка товара. 
+        /// </summary>
         [XmlElement(ElementName = "offer")]
         public List<Offer> Offer { get; set; } = new List<Offer>();
 

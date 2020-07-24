@@ -87,8 +87,9 @@
     <Compile Include="Models\SellerModel.cs" />
     <Compile Include="ManagerXml\GetDataXml.cs" />
     <Compile Include="ManagerXml\ParseXml.cs" />
+    <Compile Include="Services\Converters\BoolToStringConverter.cs" />
+    <Compile Include="Services\Converters\ConverterBase.cs" />
     <Compile Include="Services\Converters\IntToVisibilityConverter.cs" />
-    <Compile Include="Services\Converters\StringToDecimalConverter.cs" />
     <Compile Include="Services\Converters\StringTointConverter.cs" />
     <Compile Include="Services\Validation\AllowableCharactersTextBoxBehavior.cs" />
     <Compile Include="Services\Validation\TextBoxInputDecimalValuesBehavior.cs" />

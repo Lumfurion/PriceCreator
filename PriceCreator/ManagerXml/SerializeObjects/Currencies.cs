@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace PriceCreator.ManagerXml.SerializeObjects
-{
+{   /// <summary>
+    /// Список курсов валют магазина. 
+    /// </summary>
     [XmlRoot(ElementName = "currencies")]
     public class Currencies
     {

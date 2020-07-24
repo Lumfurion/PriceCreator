@@ -71,9 +71,9 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBox   Tag="Введите цену" Margin="2"  
-                             Text="{Binding Price,StringFormat=F2,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource  StringToDecimal},ConverterParameter=0.0}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center" MaxLength="13">
+                             Text="{Binding Price,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource  StringToint},ConverterParameter=0}"  Style="{StaticResource  BaseTextBox}" VerticalAlignment="Center">
                                 <interactivity:Interaction.Behaviors>
-                                    <v:TextBoxInputDecimalValuesBehavior InputMode="DecimalInput" />
+                                    <v:AllowableCharactersTextBoxBehavior RegularExpression="^[0-9.\-]+$" MaxLength="9" />
                                 </interactivity:Interaction.Behaviors>
                             </TextBox>
                             <ComboBox   ItemsSource="{Binding Currencies}" SelectedItem="{Binding CurrencySelected}" Grid.Column="1" Margin="1"  SelectedIndex="{Binding SelectedIndex}">

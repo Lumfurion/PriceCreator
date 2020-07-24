@@ -1,8 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:PriceCreator.Services.Converters"
+                    >
    
     <ControlTemplate x:Key="VideoListItems" TargetType="ListBoxItem">
-        
+
+        <Grid>
             <Border   
                 Name="brd"
                 Margin="10,2"
@@ -10,42 +13,37 @@
                 CornerRadius="2">
                 <Grid  >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="91*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="22*"/>
+                        <RowDefinition Height="26*"/>
+                        <RowDefinition Height="818*"/>
                     </Grid.RowDefinitions>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="36*"/>
-                            <RowDefinition Height="23*"/>
-                            <RowDefinition Height="21*"/>
-                        </Grid.RowDefinitions>
-                        <!--Имя товара и Цена-->
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="23*"/>
-                                <ColumnDefinition Width="654*"/>
-                            </Grid.ColumnDefinitions>
-                            <CheckBox  IsChecked="{ Binding Available}" Margin="5"  VerticalAlignment="Center"/>
-                            <TextBlock x:Name="Name"   Grid.Column="1"  Margin="5" FontSize="20"  Text="{Binding  Name,StringFormat=Имя товара: {0}}" VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <!--Цена,Количество товара тд..-->
-                        <Grid  Grid.Row="1" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="144*"/>
-                                <ColumnDefinition Width="28*"/>
-                                <ColumnDefinition Width="191*"/>
-                                <ColumnDefinition Width="241*"/>
-                                <ColumnDefinition Width="91*"/>
-                                <ColumnDefinition Width="45*"/>
-                                <ColumnDefinition Width="51*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock  Margin="5" x:Name="Price"  Grid.Column="0"  Text="{Binding Price,StringFormat=Цена:{0}}"   FontSize="20" VerticalAlignment="Center"/>
-                            <TextBlock  Margin="5" x:Name="CurrencyId" Grid.Column="1"  Text="{Binding CurrencyId}"    FontSize="20" VerticalAlignment="Center"/>
-                            <TextBlock  Margin="5" x:Name="Vendor" Grid.Column="2"  Text="{Binding Vendor,StringFormat=Продавец:{0}}"     FontSize="20" VerticalAlignment="Center"/>
-                            <TextBlock  Margin="5" x:Name="Stock_quantity" Grid.Column="3"  Text="{Binding Stock_quantity,StringFormat=Количество товаров:{0}}" FontSize="20" VerticalAlignment="Center"/>
-                            <TextBlock  Margin="5" x:Name="Id" Grid.Column="4"  Text="{Binding Id,StringFormat=Id товара:{0}}"    FontSize="20" VerticalAlignment="Center"  />
-                        </Grid>
+                    <TextBlock x:Name="Name"  FontWeight="Bold" Foreground="Gray"   Style="{StaticResource BaseText}" FontSize="18"
+                           Margin="5" TextTrimming="CharacterEllipsis"  Text="{Binding  Name,StringFormat=Имя товара:{0}}" TextAlignment="Center"  VerticalAlignment="Center"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="142*"/>
+                            <ColumnDefinition Width="38*"/>
+                            <ColumnDefinition Width="229*"/>
+                            <ColumnDefinition Width="365*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock    Margin="2" x:Name="Price"  Grid.Column="0"  Text="{Binding Price,StringFormat=Цена:{0}}"   FontWeight="Bold" Foreground="Gray"   Style="{StaticResource BaseText}" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                        <TextBlock    Margin="2" x:Name="CurrencyId" Grid.Column="1"  Text="{Binding CurrencyId}"   FontWeight="Bold" Foreground="Gray"   Style="{StaticResource BaseText}" FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock    FontWeight="Bold" Foreground="Gray"   Style="{StaticResource BaseText}"  Margin="2" x:Name="Stock_quantity" Grid.Column="2"  Text="{Binding Stock_quantity,StringFormat=Количество товаров:{0}}" FontSize="18" VerticalAlignment="Center"  />
+                        <TextBlock    TextTrimming="CharacterEllipsis" FontWeight="Bold" Foreground="Gray"   Style="{StaticResource BaseText}"  Margin="2" x:Name="Vendor" Grid.Column="3"  Text="{Binding Vendor,StringFormat=Производитель товара:{0}}"     FontSize="18" VerticalAlignment="Center"/>
                     </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="69*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock   x:Name="Id"  Style="{StaticResource BaseText}" Grid.Column="0"  Text="{Binding Id,StringFormat=Id товара:{0}}"  Margin="2"   HorizontalAlignment="Right" FontSize="18" FontWeight="Bold"  Foreground="Gray"   />
+                        <TextBlock x:Name="Available"  Margin="2"  Grid.Column="1" Style="{StaticResource BaseText}"  Text="{Binding Available,StringFormat=Есть товар в наличии:{0},Converter={converters:BoolToStringConverter}}" FontSize="18" FontWeight="Bold"  Foreground="Gray"  />
+                    </Grid>
+
+
+
                 </Grid>
             </Border>
 
@@ -57,7 +55,8 @@
                 Fill="{Binding ElementName=brd, Path=Background}"
                 Points="0,0 20,15, 0,30"
                 Visibility="Hidden" />-->
-        
+        </Grid>
+
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsSelected" Value="true">
@@ -69,6 +68,7 @@
                 <Setter TargetName="Vendor" Property="Foreground" Value="White" />
                 <Setter TargetName="Stock_quantity" Property="Foreground" Value="White" />
                 <Setter TargetName="Id" Property="Foreground" Value="White" />
+                <Setter TargetName="Available" Property="Foreground" Value="White" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="true">
@@ -79,6 +79,7 @@
                 <Setter TargetName="Vendor" Property="Foreground" Value="White" />
                 <Setter TargetName="Stock_quantity" Property="Foreground" Value="White" />
                 <Setter TargetName="Id" Property="Foreground" Value="White" />
+                <Setter TargetName="Available" Property="Foreground" Value="White" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

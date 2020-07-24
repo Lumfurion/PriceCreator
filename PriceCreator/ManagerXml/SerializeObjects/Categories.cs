@@ -2,10 +2,12 @@
 using System.Xml.Serialization;
 
 namespace PriceCreator.ManagerXml.SerializeObjects
-{
+{  
     [XmlRoot(ElementName = "categories")]
     public class Categories
-    {
+    {   /// <summary>
+        ///Список категорий магазина. 
+        /// </summary>
         [XmlElement(ElementName = "category")]
         public List<Category> Category { get; set; }
         public Categories()

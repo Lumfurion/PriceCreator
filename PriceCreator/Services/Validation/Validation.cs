@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace PriceCreator.Services.Validation
 {
@@ -18,12 +19,17 @@ namespace PriceCreator.Services.Validation
         {
             if (string.IsNullOrEmpty(Url))
                 return "Пустой адрес";
-            else if (!Url.StartsWith("http://"))
+            else if (!URLRegex(Url))
                 return "Некорректный адрес сайта,проверьте адрес.(начало сайта должно начинаться http://)";
             else return string.Empty;
 
         }
-
+        static bool URLRegex(string str)
+        {
+            string pattern = @"^(http|ftp|https|www)://([\w+?\.\w+])+([a-zA-Z0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?$";
+            bool result = Regex.IsMatch(str, pattern, RegexOptions.IgnoreCase);
+            return result;
+        }
         public static string Price(decimal Price)
         {
             if (Price == 0)

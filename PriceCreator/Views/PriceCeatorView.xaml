@@ -84,16 +84,14 @@
         </GroupBox>
         <!--Products-->
         <GroupBox Grid.Row="2"  Header="Products" FontSize="16" Margin="16,0,10,9" Background="#DFE5EB" Foreground="#005565" BorderBrush="#005565">
-            <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <ListBox  HorizontalContentAlignment="Stretch" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListBox  HorizontalContentAlignment="Stretch" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                    BorderThickness="0"   ItemsSource="{Binding  OffersWithCategory}" SelectedItem="{Binding SelectOffer}">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="Template" Value="{StaticResource VideoListItems}" />
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                </ListBox>
-            </ScrollViewer>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template" Value="{StaticResource VideoListItems}" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
         </GroupBox>
         <GroupBox   Header="Control Panel" FontSize="16" Margin="2" Background="#DFE5EB" Foreground="#005565" BorderBrush="#005565" Grid.Row="3">
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" >

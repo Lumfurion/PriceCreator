@@ -1,6 +1,6 @@
-﻿using PriceCreator.Services.Validation;
-using System;
+﻿using System;
 using System.ComponentModel;
+using PriceCreator.Services.Validation;
 
 
 namespace PriceCreator.Models

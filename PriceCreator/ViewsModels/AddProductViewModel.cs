@@ -1,7 +1,6 @@
 ﻿using PriceCreator.Models;
 using PriceCreator.Services.Validation;
 using PriceCreator.Views;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -14,9 +13,15 @@ namespace PriceCreator.ViewsModels
 {
     class AddProductViewModel : ChangeProperty, IDataErrorInfo
     {
-        
+
         #region Для провеки свойств
+        /// <summary>
+        /// Хранения валидности свойств.
+        /// </summary>
         private Dictionary<string, bool> validProperties;
+        /// <summary>
+        /// Включить кнопку если все свойства валлидни.
+        /// </summary>
         private bool allPropertiesValid = false;
         public bool AllPropertiesValid
         {
