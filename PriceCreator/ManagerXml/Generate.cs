@@ -12,7 +12,7 @@ namespace PriceCreator.ManagerXml.Serialization
     {
        
         public static  void DataTransfer(SellerModel seller, string path)
-        {
+        {        
                 Yml_catalog catalog = new Yml_catalog(seller.Name, seller.Company, seller.Url);
    
                 //Категория
@@ -85,6 +85,16 @@ namespace PriceCreator.ManagerXml.Serialization
                     serializer.Serialize(sw, catalog, ns);
                 }
 
+
+                seller.Name = " ";
+                seller.Company = " ";
+                seller.Url = " ";
+                seller.Date = " ";
+                seller.Сategories.Clear();
+                seller.Currencies.Clear();
+                seller.Offers.Clear();
+
         }
+
     }
 }
